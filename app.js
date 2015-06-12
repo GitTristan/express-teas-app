@@ -4,6 +4,23 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var pg = require('pg');
+
+var connString = "postgres://localhost/express_teas_app";
+
+var client = new pg.Client(connString);
+client.connect(function(err) {
+  if (err) {
+    return console.error('could not connect to postgres', err);
+  }
+  client.query('SELECT NOW() AS "theTime"', function(err, result) {
+    if (err) {
+      return console.error('error running query', err);
+    }
+    console.log("PostgreSQL is totally hooking it up:", result.rows[0].theTime);
+    client.end
+  })
+})
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
