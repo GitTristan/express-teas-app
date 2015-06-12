@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+  h1(class="page-header") New Tea for you
+  
+  ol(class="breadcrumb")
+    li
+      a(href="/teas") My Teas
+    li New
+    
+  form(action='/teas' method='post' class='form-horizontal')
+    div(class='form-group')
+      label(class='col-md-2 control-label') Name
+      div(class="col-md-4")
+        input(type='text' name='tea[name]' class='form-control')
+          
+    div(class='form-group')
+      label(class='col-md-2 control-label') Country
+      div(class="col-md-4")
+        input(type='text' name='tea[country]' class='form-control')
+
+    div(class='form-group')
+      label(class='col-md-2 control-label') Price
+      div(class="col-md-4")
+        input(type='number' name='tea[price]' class='form-control')
+
+    div(class='form-group')
+      label(class='col-md-2 control-label') Reorderable?
+      div(class="col-md-4")
+        input(type='checkbox' name='tea[reorderable]' class='form-control')
+          
+    div(class='form-group')
+      div(class='col-md-offset-2 col-md-4')
+        input(type='submit' name='commit' value='Add this tea' class='btn btn-success')
+
+  
